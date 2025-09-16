@@ -19,7 +19,7 @@ services:
     container_name: prometheus
     user: "65534:65534"
     command:
-      - --config.file=/etc/prometheus/prometheus.yml
+      - --config.file=/etc/prometheus-config/prometheus.yml
       - --storage.tsdb.path=/prometheus
       - --storage.tsdb.retention.time=${PROMETHEUS_RETENTION}
       - --storage.tsdb.retention.size=${PROMETHEUS_RETENTION_SIZE}
@@ -27,7 +27,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus:/etc/prometheus:ro
+      - ./prometheus:/etc/prometheus-config:ro
       - /srv/librechat-data/monitoring/prometheus:/prometheus
     restart: unless-stopped
     depends_on:
