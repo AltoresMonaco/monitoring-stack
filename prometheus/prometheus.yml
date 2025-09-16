@@ -7,6 +7,11 @@ scrape_configs:
     static_configs:
       - targets: ["dcgm-exporter:9400"]
 
+  # Compatibility with popular Grafana dashboards that expect this job name
+  - job_name: nvidia-dcgm-exporter
+    static_configs:
+      - targets: ["dcgm-exporter:9400"]
+
   - job_name: prometheus
     static_configs:
       - targets: ["prometheus:9090"]
